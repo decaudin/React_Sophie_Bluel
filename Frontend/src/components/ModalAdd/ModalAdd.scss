@@ -1,0 +1,143 @@
+.modalAdd {
+    position: absolute;
+    inset: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    outline: none;
+    width: 46%;
+    height: 100%;
+    margin: auto;
+    overflow: auto;
+    .fontIcon{
+        width: 95%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .goBack {
+        cursor: pointer;
+        margin-top: 5px;
+        }
+        .closeButton {
+            font-size: 30px;
+            cursor: pointer;
+        }    
+    } 
+    h2 {
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+    .projectUpload {
+        width: 70%;
+        margin: auto;
+        background-color: #E8F1F6;
+        border-radius: 5px;
+        img {
+            width: 37%;
+            height: 186px;
+            display: flex;
+            margin: auto;
+            object-fit: cover;
+        }
+        .mountains {
+            font-size: 4.5vw;
+            color: #B9C5CC;
+            display: flex;
+            margin: auto;
+            padding-top: 25px;
+            margin-bottom: 15px;
+        }
+        .imageAdd {
+            cursor: pointer;
+            color:#306685;
+            background-color: #CBD6DC;
+            border-radius: 19px;
+            display: flex;
+            margin: auto;
+            justify-content: center;
+            width: 35%;
+            padding-top: 5px;
+            padding-bottom: 9px;
+        }
+        #imageUpload {
+            display: none;
+        }
+        .imageType {
+            display: flex;
+            justify-content: center;
+            margin-top: 7px;
+            padding-bottom: 25px;
+            font-size: 0.8vw;
+        }
+    }
+    .titleProject {
+        display: flex;
+        flex-direction: column;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        .labelTitle {
+            width: 70%;
+            margin: auto;
+            margin-bottom: 5px;
+        }
+        #title {
+            width: 70%;
+            height: 35px;
+            margin: auto;
+            border: none;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.09);
+        }
+    }
+    .categoryProject {
+        display: flex;
+        flex-direction: column;
+        .categoryName {
+            width: 70%;
+            margin: auto;
+            margin-bottom: 5px;
+        }
+        #category {
+            width: 70%;
+            height: 40px;
+            margin: auto;
+            border: none;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.09);
+        }
+    }
+    .errorText {
+        color: red;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    .borderModal {
+        border: solid #B3B3B3 1px;
+        width: 70%;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .submitButton {
+        cursor: pointer;
+        color: white;
+        background-color: #A7A7A7;
+        border-radius: 20px;
+        border: none;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        margin-top: 40px;
+        width: 40%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 1.2vw;
+        &.validButton {
+            background-color: #1D6154;
+        }
+    }
+}
+.modalAddOverlay {
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+} 

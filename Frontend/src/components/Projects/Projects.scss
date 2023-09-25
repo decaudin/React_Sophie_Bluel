@@ -1,0 +1,80 @@
+.projects {
+    margin-top: 100px;
+    color: #1D6154;
+    .projectsTitle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+         h2 {
+        font-family: 'Syne';
+        margin-right: 30px;
+        }
+        .modalOpen {
+            display: none;
+            svg {
+                width: 15px;
+            }
+            &.adminMode {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 5.5%;
+                color: black;
+                cursor: pointer;
+            } 
+        }
+    }
+    .btn {
+        ul {
+            display: flex;
+            justify-content: space-evenly;
+            list-style: none;
+            width: 40%;
+            margin: auto;
+            li {
+                border: solid 1.5px #1D6154;
+                padding: 4px 10px 6px 10px;
+                border-radius: 20px;
+                &.btnAll {
+                    padding: 4px 20px 6px 20px;
+                }
+                &.btnObjects {
+                    padding: 4px 15px 6px 15px;
+                }
+                &.btnApartment {
+                    padding: 4px 12px 6px 12px;
+                }
+                &:hover {
+                    background-color: #1D6154;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+        &.adminMode {
+            visibility: hidden;
+        } 
+    }
+    .projectsImage {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+        width: 80%;
+        margin: auto;
+        margin-top: 50px;
+        .projectItem {
+            img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            }
+            .projectTitle {
+                color: black;
+                font-weight: 400;
+                font-size: 1.1vw;
+                margin-top: -5px;
+            }
+        }
+    }
+}

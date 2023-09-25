@@ -1,0 +1,43 @@
+.contact {
+    margin-top: 100px;
+    h2 {
+        color: #1D6154;
+        font-family: 'Syne';
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin: auto;
+        label {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .input {
+            border: white;
+            box-shadow: 3px 3px 8px rgb(207, 207, 207);
+            height: 40px;
+        }
+        textarea {
+            border: white;
+            box-shadow: 3px 3px 8px rgb(207, 207, 207);
+            height: 150px;
+        }
+        .send {
+            color: white;
+            background-color: #1D6154;
+            width: 35%;
+            margin: auto;
+            padding: 15px 0px 15px 0px;
+            border-radius: 25px;
+            border: #1D6154;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+}

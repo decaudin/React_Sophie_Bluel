@@ -1,0 +1,92 @@
+.modalGallery {
+    position: absolute;
+    inset: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    outline: none;
+    padding: 20px;
+    width: 43.5%;
+    height: 95%;
+    margin: auto;
+    overflow: auto;
+    .closeButton {
+        position: absolute;
+        top: 5px;
+        right: 25px;
+        font-size: 30px;
+        cursor: pointer;
+    }    
+    h2 {
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+    .projectsImageModal {
+        width: 85%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 10px;
+        margin: auto;
+        .projectItemModal {
+            .enlarge {
+                position: absolute;
+                margin-top: 7px;
+                margin-left: 47px;
+                background-color: black;
+                color: white;
+                border-radius: 3px;
+                padding: 4px 4px ;
+            }
+            .deleteProject {
+                cursor: pointer;
+                position: absolute;
+                margin-top: 7px;
+                margin-left: 74px;
+                background-color: black;
+                color: white;
+                border-radius: 3px;
+                padding: 4px 4px ;
+            }
+            img {
+                width: 100%;
+            }
+            .edit {
+                font-size: 1.2vw;
+                font-weight: 400;
+                margin-top: -5px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .borderModal {
+        border: solid #B3B3B3 1px;
+        width: 85%;
+        margin: auto;
+        margin-top: 40px;
+    }
+    .goToModalAdd {
+        background-color: #1D6154;
+        border: none;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 10px;
+        display: flex;
+        margin: auto;
+        width: 40%;
+        justify-content: center;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        font-size: 1.1vw;
+        cursor: pointer;
+    }
+    .deleteGallery {
+        color: red;
+        text-align: center;
+    }
+    
+} 
+.modalGalleryOverlay {
+        position: fixed;
+        inset: 0px;
+        background-color: rgba(0, 0, 0, 0.5);
+    } 

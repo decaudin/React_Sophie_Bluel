@@ -1,0 +1,63 @@
+.headerBlack {
+    display: none;
+    .headerMiddle {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .headerChange {
+        background-color: white;
+        color: black;
+        border-radius: 20px;
+        padding: 8px 20px 11px 20px;
+    }
+    &.adminMode {
+        display: inline;
+        display: flex;
+        background-color: black;
+        color: white;
+        align-items: center;
+        justify-content: center;
+    } 
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+    .title {
+        color: #B1663C;
+        h1 {
+            font-family: 'Syne';
+            font-size: 50px;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-family: 'Work Sans';
+            font-weight: 100;
+            font-size: 15px;
+            margin-top: -10px;
+        }
+    }
+    .navBar {
+        width: 25%;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            margin-top: 55px;
+            li {
+                cursor: pointer;
+                img {
+                    width: 20px;
+                }
+                &:hover {
+                    color:  #B1663C;
+                }
+            }
+            .loginBold {
+                font-weight: bold;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,58 @@
+.login {
+    width: 30%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 150px;
+    h2 {
+        color: #1D6154;
+        font-family: 'Syne';
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        label {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .input {
+            border: white;
+            box-shadow: 3px 3px 8px rgb(207, 207, 207);
+            height: 40px;
+        }
+        .inputContainer {
+            display: flex;
+            align-items: center;
+            position: relative;
+            .input {
+                border: white;
+                box-shadow: 3px 3px 8px rgb(207, 207, 207);
+                height: 40px;
+                width: 100%;
+            }
+            .passwordIcon {
+                position: absolute;
+                right: 10px;
+                cursor: pointer;
+            }
+        }
+        .send {
+            color: white;
+            background-color: #1D6154;
+            width: 45%;
+            margin: auto;
+            padding: 15px 0px 15px 0px;
+            border-radius: 25px;
+            border: #1D6154;
+            margin-top: 35px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+    p {
+        text-align: center;
+        text-decoration: underline;
+    }
+}
