@@ -5,7 +5,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
 import "./ModalAdd.scss";
 
-const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
+const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -43,6 +43,7 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     if (image && title && category) {
       setIsValidationError(false);
     } else {
@@ -52,16 +53,14 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
 
     if (!isValidationError) {
 
-      console.log('Données à soumettre :');
-      console.log('Image:', image);
-      console.log('Titre:', title);
-      console.log('Catégorie:', category);
-
     const formData = new FormData();
-    formData.append('image', image);
-    //formData.append('title', title);
-    //formData.append('category', category);
-    formData.append('data', JSON.stringify({ title, category }));
+    formData.append('imageUrl', image);
+    formData.append('title', title);
+    formData.append('categoryId', category);
+
+    console.log(formData.get('imageUrl'));
+    console.log(formData.get('title'));
+    console.log(formData.get('categoryId'));
 
     try {
       const response = await fetch('http://localhost:5678/api/works', {
@@ -76,10 +75,16 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
   
       if (response.ok) {
         console.log('Données soumises avec succès !');
+        
+        addProject({
+          image: URL.createObjectURL(image),
+          title,
+          category,
+        });
+
         setImage(null);
         setTitle('');
         setCategory('');
-  
         toggleModalAdd();
         toggleModal();
       } else {
@@ -99,7 +104,7 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
         </span>
       </div>
       <h2>Ajout photo</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
       <div className="projectUpload">
         {image ? (
           <img src={image} alt="Nouveau projet de Sophie Bluel" className="uploadedImage" />
@@ -120,9 +125,9 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd }) => {
         <label htmlFor="category" className="categoryName">Catégorie</label>
         <select id="category" value={category} onChange={handleCategoryChange}>
           <option value=""></option>
-          <option value="Objets">Objets</option>
-          <option value="Appartements">Appartements</option>
-          <option value="Hôtels & restaurants">Hôtels & restaurants</option>
+          <option value="1">Objets</option>
+          <option value="2">Appartements</option>
+          <option value="3">Hôtels & restaurants</option>
         </select>
       </div>
       {isValidationError && <div className='errorText'>Champs vide ou invalide</div>}

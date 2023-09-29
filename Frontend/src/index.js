@@ -17,13 +17,13 @@ const App = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    setIsAuthenticated(false);
+    setIsAuthenticated(false); // Mettre à jour l'état d'authentification en tant que déconnecté
   };
 
   return (
     <React.StrictMode>
       <Router>
-        <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+        <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
         <Routes>
           <Route
             exact
@@ -32,7 +32,7 @@ const App = () => {
           />
           <Route
             path="/Login"
-            element={<Login isAuthenticated={isAuthenticated} />}
+            element={<Login onLogin={() => setIsAuthenticated(true)} />}
           />
         </Routes>
         <Footer />

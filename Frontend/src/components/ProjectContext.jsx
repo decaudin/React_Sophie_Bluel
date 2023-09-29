@@ -6,13 +6,23 @@ const useProjectContext = () => useContext(ProjectContext);
 
 const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
-
+  
   const updateProjects = (updatedProjects) => {
     setProjects(updatedProjects);
   };
 
+  const addProject = (newProject) => {
+    setProjects([...projects, newProject]);
+  };
+
   return (
-    <ProjectContext.Provider value={{ projects, updateProjects }}>
+    <ProjectContext.Provider
+      value={{
+        projects,
+        updateProjects,
+        addProject,
+      }}
+    >
       {children}
     </ProjectContext.Provider>
   );

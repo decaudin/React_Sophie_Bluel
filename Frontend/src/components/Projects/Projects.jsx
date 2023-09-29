@@ -59,7 +59,7 @@ const Projects = () => {
                 </div>
             </div>
             <ModalGallery isOpen={modalGalleryOpen} toggleModal={toggleModalGallery} toggleModalAdd={toggleModalAdd} data={projects} />
-            <ModalAdd isOpen={modalAddOpen} toggleModalAdd={toggleModalAdd} toggleModal={toggleModalGallery} />
+            <ModalAdd isOpen={modalAddOpen} toggleModalAdd={toggleModalAdd} toggleModal={toggleModalGallery} addProject={updateProjects} />
             <div className={`btn ${sessionStorage.getItem("token") ? 'adminMode' : ''}`}>
                 <ul>
                     <li className="btnAll" onClick={() => setFilter("Tous")}>Tous</li>

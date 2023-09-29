@@ -6,7 +6,7 @@ import instagram from "../../assets/instagram.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-const Header = () => {
+const Header = ({ isAuthenticated, onLogout }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,15 +14,15 @@ const Header = () => {
     navigate("/Login");
   };
 
-  const logout = () => {
+  const handleLogout = () => {
     sessionStorage.removeItem("token");
+    onLogout(); // Appel de la fonction de rappel pour notifier la déconnexion
     navigate("/");
-    //window.location.reload();
   };
 
   return (
     <div>
-      <div className={`headerBlack ${sessionStorage.getItem("token") ? 'adminMode' : ''}`}>
+      <div className={`headerBlack ${isAuthenticated ? 'adminMode' : ''}`}>
         <FontAwesomeIcon icon={faPenToSquare} />
         <p className="headerMiddle">Mode édition</p>
         <p className="headerChange">publiez les changements</p>
@@ -45,8 +45,8 @@ const Header = () => {
               </Link>
             </li>
             <li className={`${location.pathname === "/Login" ? "loginBold" : ""}`}>
-              {sessionStorage.getItem("token") ? (
-                <span onClick={logout}>logout</span>
+              {isAuthenticated ? (
+                <span onClick={handleLogout}>logout</span>
               ) : (
                 <span onClick={login}>login</span>
               )}
