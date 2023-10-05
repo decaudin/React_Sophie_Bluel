@@ -24,10 +24,10 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
       
       reader.onloadend = () => {
         setImage(reader.result);
-      };
+      }; 
       
       reader.readAsDataURL(file);
-    }else {
+    } else {
       setImage(null);
     }
   };
@@ -43,7 +43,6 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     if (image && title && category) {
       setIsValidationError(false);
     } else {
@@ -52,47 +51,42 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
     }
 
     if (!isValidationError) {
+      const formData = new FormData();
+      formData.append('imageUrl', image);
+      formData.append('title', title);
+      formData.append('categoryId', category);
 
-    const formData = new FormData();
-    formData.append('imageUrl', image);
-    formData.append('title', title);
-    formData.append('categoryId', category);
-
-    console.log(formData.get('imageUrl'));
-    console.log(formData.get('title'));
-    console.log(formData.get('categoryId'));
-
-    try {
-      const response = await fetch('http://localhost:5678/api/works', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
-          'Accept': 'application/json',
-          'Content-Type': 'multipart/form-data',
-        },
-        body: formData,
-      });
-  
-      if (response.ok) {
-        console.log('Données soumises avec succès !');
-        
-        addProject({
-          image: URL.createObjectURL(image),
-          title,
-          category,
+      try {
+        const response = await fetch('http://localhost:5678/api/works', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            'Content-Type': `multipart/form-data`,
+          },
+          body: formData,
         });
-
-        setImage(null);
-        setTitle('');
-        setCategory('');
-        toggleModalAdd();
-        toggleModal();
-      } else {
-        console.error('Erreur lors de la soumission du formulaire :', response.status);
+  
+        if (response.ok) {
+          console.log('Données soumises avec succès !');
+          
+          addProject({
+            image: URL.createObjectURL(image),
+            title,
+            category,
+          });
+  
+          setImage(null);
+          setTitle('');
+          setCategory('');
+          toggleModalAdd();
+          toggleModal();
+        } else {
+          console.error('Erreur lors de la soumission du formulaire :', response.status);
+        }
+      } catch (error) {
+        console.error('Erreur lors de la soumission du formulaire :', error);
       }
-    } catch (error) {
-      console.error('Erreur lors de la soumission du formulaire :', error);
-    }}
+    }
   };
   
   return (
@@ -104,7 +98,7 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
         </span>
       </div>
       <h2>Ajout photo</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
       <div className="projectUpload">
         {image ? (
           <img src={image} alt="Nouveau projet de Sophie Bluel" className="uploadedImage" />
@@ -132,13 +126,14 @@ const ModalAdd = ({ isOpen, toggleModal, toggleModalAdd, addProject }) => {
       </div>
       {isValidationError && <div className='errorText'>Champs vide ou invalide</div>}
       <div className='borderModal'></div>
-      <input type="submit" className={`submitButton ${isFormValid ? 'validButton' : ''}`} value="Valider" onClick={handleSubmit} />
+      <input type="submit" className={`submitButton ${isFormValid ? 'validButton' : ''}`} value="Valider" />
       </form>
     </Modal>
   );
 };
 
 export default ModalAdd;
+
 
 
 

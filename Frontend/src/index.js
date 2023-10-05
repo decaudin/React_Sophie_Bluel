@@ -17,7 +17,7 @@ const App = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    setIsAuthenticated(false); // Mettre à jour l'état d'authentification en tant que déconnecté
+    setIsAuthenticated(false);
   };
 
   return (

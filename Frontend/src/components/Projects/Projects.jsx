@@ -9,7 +9,7 @@ import { useProjectContext } from '../ProjectContext';
 
 Modal.setAppElement('#root');
 
-const Projects = () => {
+const Projects = ( {isAuthenticated} ) => {
     const { projects, updateProjects } = useProjectContext(); // Utilisez le contexte pour accéder aux projets
     const [filter, setFilter] = useState("Tous");
     const [modalGalleryOpen, setModalGalleryOpen] = useState(false);
@@ -53,14 +53,14 @@ const Projects = () => {
         <div className="projects">
             <div className="projectsTitle">
                 <h2>Mes projets</h2>
-                <div className={`modalOpen ${sessionStorage.getItem("token") ? 'adminMode' : ''}`} onClick={toggleModalGallery}>
+                <div className={`modalOpen ${isAuthenticated ? 'adminMode' : ''}`} onClick={toggleModalGallery}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                     <p>modifier</p>
                 </div>
             </div>
             <ModalGallery isOpen={modalGalleryOpen} toggleModal={toggleModalGallery} toggleModalAdd={toggleModalAdd} data={projects} />
             <ModalAdd isOpen={modalAddOpen} toggleModalAdd={toggleModalAdd} toggleModal={toggleModalGallery} addProject={updateProjects} />
-            <div className={`btn ${sessionStorage.getItem("token") ? 'adminMode' : ''}`}>
+            <div className={`btn ${isAuthenticated ? 'adminMode' : ''}`}>
                 <ul>
                     <li className="btnAll" onClick={() => setFilter("Tous")}>Tous</li>
                     <li className="btnObjects" onClick={() => setFilter(1)}>Objets</li>

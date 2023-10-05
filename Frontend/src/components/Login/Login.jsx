@@ -36,6 +36,7 @@ const Login = ({ onLogin }) => {
       navigate('/');
     } catch (error) {
       console.error('Erreur lors de la connexion : ', error);
+      window.alert('Identifiant et/ou mot de passe incorrect(s)');
     }
   };
 

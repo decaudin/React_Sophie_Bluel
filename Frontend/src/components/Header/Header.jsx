@@ -15,8 +15,7 @@ const Header = ({ isAuthenticated, onLogout }) => {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    onLogout(); // Appel de la fonction de rappel pour notifier la déconnexion
+    onLogout();
     navigate("/");
   };
 
